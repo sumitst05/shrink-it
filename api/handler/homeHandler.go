@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"github.com/sumitst05/shrink-it/pages"
+	"github.com/sumitst05/shrink-it/web/templates/pages"
 )
 
 func HomeHandler() http.HandlerFunc {
