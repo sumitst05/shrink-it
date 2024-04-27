@@ -21,6 +21,7 @@ main
 # Go workspace file
 go.work
 tmp/
+dist/
 
 # text files
 *.txt
