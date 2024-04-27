@@ -26,7 +26,7 @@ func (s *Server) Run() error {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	slog.Info("Server listening on port", "port", os.Getenv("PORT"))
+	slog.Info("Server listening on", "port", os.Getenv("PORT"))
 
 	return server.ListenAndServe()
 }
