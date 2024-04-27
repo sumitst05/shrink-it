@@ -14,7 +14,11 @@ func main() {
 		slog.Error("Error loading .env file")
 	}
 
-	server := server.NewServer(os.Getenv("PORT"))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = ":3000"
+	}
 
+	server := server.NewServer(os.Getenv(port))
 	server.Run()
 }
