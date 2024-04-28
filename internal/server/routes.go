@@ -16,5 +16,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	router.HandleFunc("/", handler.HomeHandler())
 
+	router.HandleFunc("/cards", handler.CardHandler())
+
 	return router
 }

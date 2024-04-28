@@ -1,0 +1,77 @@
+package components
+
+templ Cards(choice string) {
+	switch choice {
+		case "image":
+			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@imageSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">PNG</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@imageSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">JPG</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@imageSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">WebP</p>
+				</li>
+			</ul>
+		case "document":
+			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@documentSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">PDF</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@documentSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">DOC</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@documentSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">XLSX</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@documentSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">PPT</p>
+				</li>
+			</ul>
+		case "audio":
+			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@audioSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">MP3</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@audioSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">WAV</p>
+				</li>
+			</ul>
+		case "video":
+			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@videoSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">MP4</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@videoSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">MKV</p>
+				</li>
+			</ul>
+		default:
+			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@imageSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">PNG</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@imageSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">JPG</p>
+				</li>
+				<li class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer">
+					@imageSVG()
+					<p class="text-[#f8f6e3] font-bold text-4xl">WebP</p>
+				</li>
+			</ul>
+	}
+}
