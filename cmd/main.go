@@ -3,7 +3,6 @@ package main
 import (
 	"log/slog"
 	"os"
-	"sync"
 
 	_ "github.com/a-h/templ"
 	"github.com/joho/godotenv"
@@ -22,20 +21,5 @@ func main() {
 
 	server := server.NewServer(port)
 
-	var wg sync.WaitGroup
-	wg.Add(2)
-
-	go func() {
-		defer wg.Done()
-		if err := server.Run(); err != nil {
-			slog.Error("Failed to start server:", err)
-		}
-	}()
-
-	go func() {
-		defer wg.Done()
-		server.SelfPing()
-	}()
-
-	wg.Wait()
+	server.Run()
 }
