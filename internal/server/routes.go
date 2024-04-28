@@ -18,5 +18,8 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	router.HandleFunc("/cards", handler.CardHandler())
 
+	router.HandleFunc("/shrink/png", handler.HandlePNG())
+	router.HandleFunc("/shrink/jpg", handler.HandleJPG())
+
 	return router
 }

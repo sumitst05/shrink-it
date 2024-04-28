@@ -16,7 +16,14 @@ templ Home() {
 			<main class="flex flex-col items-center min-h-screen bg-[#F8F6E3] dark:bg-[#1B262C]">
 				@components.Header()
 				<h1 class="flex text-6xl font-bold text-[#7AA2E3] dark:text-[#BBE1FA] mt-40 mb-10 select-none">ShrinkIt</h1>
-				@components.Cards("")
+				<div
+					hx-get="/cards"
+					hx-swap="outerHTML"
+					hx-trigger="load"
+					hx-vals='js:{"choice": localStorage.getItem("choice") || "image"}'
+				>
+					<!--Will be swapped with cards-->
+				</div>
 			</main>
 		</body>
 	</html>

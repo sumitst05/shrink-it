@@ -78,6 +78,20 @@ templ Header() {
 		});
 
 		updateTheme(currentTheme);
+
+		function storeChoice(choice) {
+			localStorage.setItem('choice', choice);
+		}
+
+		const imageLi = document.getElementById('image');
+		const documentLi = document.getElementById('document');
+		const audioLi = document.getElementById('audio');
+		const videoLi = document.getElementById('video');
+
+		imageLi.addEventListener('click', function () {storeChoice('image');});
+		documentLi.addEventListener('click', function () {storeChoice('document');});
+		audioLi.addEventListener('click', function () {storeChoice('audio');});
+		videoLi.addEventListener('click', function () {storeChoice('video');});
 	});
 
 </script>

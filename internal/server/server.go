@@ -3,7 +3,6 @@ package server
 import (
 	"log/slog"
 	"net/http"
-	"os"
 	"time"
 )
 
@@ -26,7 +25,7 @@ func (s *Server) Run() error {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	slog.Info("Server listening on", "port", os.Getenv("PORT"))
+	slog.Info("Server listening on", "port", s.addr)
 
 	return server.ListenAndServe()
 }
