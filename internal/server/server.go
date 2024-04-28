@@ -30,3 +30,22 @@ func (s *Server) Run() error {
 
 	return server.ListenAndServe()
 }
+
+func (s *Server) SelfPing() {
+	ticker := time.NewTicker(14 * time.Minute)
+	go func() {
+		for range ticker.C {
+			s.pingServer()
+		}
+	}()
+}
+
+func (s *Server) pingServer() {
+	res, err := http.Get("http://localhost" + s.addr)
+	if err != nil {
+		slog.Error("Failed to ping server:", err)
+		return
+	}
+	defer res.Body.Close()
+	slog.Info("Server pinged successfully")
+}
