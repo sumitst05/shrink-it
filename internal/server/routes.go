@@ -20,6 +20,8 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	router.HandleFunc("/shrink/png", handler.HandlePNG())
 	router.HandleFunc("/shrink/jpg", handler.HandleJPG())
+	router.HandleFunc("/shrink/pdf", handler.HandlePDF())
+	router.HandleFunc("/shrink/docx", handler.HandleDOCX())
 
 	return router
 }

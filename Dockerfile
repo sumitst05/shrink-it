@@ -18,9 +18,16 @@ RUN chmod +x /usr/local/bin/tailwindcss
 # Compile TailwindCSS styles
 RUN tailwindcss -i ./web/static/index.css -o ./dist/style.css
 
+# Install Ghostscript
+RUN apt-get update && \
+    apt-get install -y ghostscript pandoc && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Build Go app
 RUN go build -o main ./cmd/main.go
 
 EXPOSE 3000
 
 CMD ["./main"]
+

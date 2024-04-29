@@ -29,15 +29,22 @@ templ Cards(choice string) {
 				>
 					@documentSVG()
 					<p class="text-[#f8f6e3] font-bold text-4xl">PDF</p>
-					<input type="file" accept="application/pdf" id="pdfFile" hidden/>
+					<input type="file" accept="application/pdf" id="pdfFile" name="file" onchange="submitForm('pdfFile')" hidden/>
 				</li>
 				<li
 					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('docFile').click();"
+					onclick="document.getElementById('docxFile').click();"
 				>
 					@documentSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">DOC</p>
-					<input type="file" accept=".doc,.docx" id="docFile" hidden/>
+					<p class="text-[#f8f6e3] font-bold text-4xl">DOCX</p>
+					<input
+						type="file"
+						accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+						id="docxFile"
+						name="file"
+						onchange="submitForm('docxFile')"
+						hidden
+					/>
 				</li>
 			</ul>
 		case "audio":
@@ -134,6 +141,10 @@ templ Cards(choice string) {
 			form.action = '/shrink/png';
 		} else if (fileInputId === 'jpgFile') {
 			form.action = '/shrink/jpg';
+		} else if (fileInputId === 'pdfFile') {
+			form.action = '/shrink/pdf'
+		} else if (fileInputId === 'docxFile') {
+			form.action = '/shrink/docx';
 		}
 
 		var fileInput = document.getElementById(fileInputId);
