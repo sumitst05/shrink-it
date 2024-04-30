@@ -45,11 +45,11 @@ templ Cards(choice string, cards []string) {
 	} else if choice == "audio" {
 		<li
 			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-			onclick="document.getElementById('pngFile').click();"
+			onclick="document.getElementById('mp3File').click();"
 		>
 			@audioSVG()
 			<p class="text-[#f8f6e3] font-bold text-4xl">MP3</p>
-			<input type="file" accept="audio/mp3" id="mp3File" name="file" onchange="submitForm('mp3File')" hidden/>
+			<input type="file" accept="audio/mpeg" id="mp3File" name="file" onchange="submitForm('mp3File')" hidden/>
 		</li>
 		<li
 			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
@@ -74,7 +74,7 @@ templ Cards(choice string, cards []string) {
 		>
 			@videoSVG()
 			<p class="text-[#f8f6e3] font-bold text-4xl">MKV</p>
-			<input type="file" accept="video/mkv" id="mkvFile" name="file" onchange="submitForm('mkvFile')" hidden/>
+			<input type="file" accept="video/x-matroska" id="mkvFile" name="file" onchange="submitForm('mkvFile')" hidden/>
 		</li>
 	}
 	<script>
@@ -92,6 +92,14 @@ templ Cards(choice string, cards []string) {
 			form.action = '/shrink/pdf'
 		} else if (fileInputId === 'docxFile') {
 			form.action = '/shrink/docx';
+		} else if (fileInputId === 'mp3File') {
+			form.action = '/shrink/mp3'
+		} else if (fileInputId === 'wavFile') {
+			form.action = '/shrink/wav'
+		} else if (fileInputId === 'mp4File') {
+			form.action = '/shrink/mp4'
+		} else if (fileInputId === 'mkvFile') {
+			form.action = '/shrink/mkv'
 		}
 
 		var fileInput = document.getElementById(fileInputId);

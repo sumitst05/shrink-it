@@ -22,6 +22,10 @@ func (s *Server) RegisterRoutes() http.Handler {
 	router.HandleFunc("/shrink/jpg", handler.HandleJPG())
 	router.HandleFunc("/shrink/pdf", handler.HandlePDF())
 	router.HandleFunc("/shrink/docx", handler.HandleDOCX())
+	router.HandleFunc("/shrink/mp3", handler.HandleMP3())
+	router.HandleFunc("/shrink/wav", handler.HandleWAV())
+	router.HandleFunc("/shrink/mp4", handler.HandleMP4())
+	router.HandleFunc("/shrink/mkv", handler.HandleMKV())
 
 	return router
 }

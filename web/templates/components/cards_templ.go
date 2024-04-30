@@ -24,7 +24,7 @@ func Cards(choice string, cards []string) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		if choice == "image" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;pngFile&#39;).click();\">")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -32,7 +32,7 @@ func Cards(choice string, cards []string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">PNG</p><input type=\"file\" accept=\"image/png\" id=\"pngFile\" name=\"file\" onchange=\"submitForm(&#39;pngFile&#39;)\" hidden></li><li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;jpgFile&#39;).click();\">")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -40,12 +40,12 @@ func Cards(choice string, cards []string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">JPG</p><input type=\"file\" accept=\"image/jpeg\" id=\"jpgFile\" name=\"file\" onchange=\"submitForm(&#39;jpgFile&#39;)\" hidden></li>")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		} else if choice == "document" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;pdfFile&#39;).click();\">")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 4)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -53,7 +53,7 @@ func Cards(choice string, cards []string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">PDF</p><input type=\"file\" accept=\"application/pdf\" id=\"pdfFile\" name=\"file\" onchange=\"submitForm(&#39;pdfFile&#39;)\" hidden></li><li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;docxFile&#39;).click();\">")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 5)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -61,12 +61,12 @@ func Cards(choice string, cards []string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">DOCX</p><input type=\"file\" accept=\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\" id=\"docxFile\" name=\"file\" onchange=\"submitForm(&#39;docxFile&#39;)\" hidden></li>")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 6)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		} else if choice == "audio" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;pngFile&#39;).click();\">")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 7)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -74,7 +74,7 @@ func Cards(choice string, cards []string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">MP3</p><input type=\"file\" accept=\"audio/mp3\" id=\"mp3File\" name=\"file\" onchange=\"submitForm(&#39;mp3File&#39;)\" hidden></li><li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;wavFile&#39;).click();\">")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 8)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -82,12 +82,12 @@ func Cards(choice string, cards []string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">WAV</p><input type=\"file\" accept=\"audio/wav\" id=\"wavFile\" name=\"file\" onchange=\"submitForm(&#39;wavFile&#39;)\" hidden></li>")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 9)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		} else if choice == "video" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;mp4File&#39;).click();\">")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 10)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -95,7 +95,7 @@ func Cards(choice string, cards []string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">MP4</p><input type=\"file\" accept=\"video/mp4\" id=\"mp4File\" name=\"file\" onchange=\"submitForm(&#39;mp4File&#39;)\" hidden></li><li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;mkvFile&#39;).click();\">")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 11)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -103,12 +103,12 @@ func Cards(choice string, cards []string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">MKV</p><input type=\"file\" accept=\"video/mkv\" id=\"mkvFile\" name=\"file\" onchange=\"submitForm(&#39;mkvFile&#39;)\" hidden></li>")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 12)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script>\n\tfunction submitForm(fileInputId) {\n\t\tvar form = document.createElement('form');\n\t\tform.method = 'POST';\n\t\tform.enctype = 'multipart/form-data';\n\t\tform.style.display = 'none';\n\n\t\tif (fileInputId === 'pngFile') {\n\t\t\tform.action = '/shrink/png';\n\t\t} else if (fileInputId === 'jpgFile') {\n\t\t\tform.action = '/shrink/jpg';\n\t\t} else if (fileInputId === 'pdfFile') {\n\t\t\tform.action = '/shrink/pdf'\n\t\t} else if (fileInputId === 'docxFile') {\n\t\t\tform.action = '/shrink/docx';\n\t\t}\n\n\t\tvar fileInput = document.getElementById(fileInputId);\n\t\tform.appendChild(fileInput.cloneNode(true));\n\n\t\tdocument.body.appendChild(form);\n\t\tform.submit();\n\t\tdocument.body.removeChild(form);\n\t}\n</script>")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 13)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

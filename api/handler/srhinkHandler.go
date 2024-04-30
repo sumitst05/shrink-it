@@ -152,3 +152,122 @@ func HandleDOCX() http.HandlerFunc {
 		defer os.Remove("shrinked.docx")
 	}
 }
+
+func HandleMP3() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		file, _, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
+			return
+		}
+		defer file.Close()
+
+		w.Header().Set("Content-Type", "audio/mpeg")
+		w.Header().Set("Content-Disposition", `attachment; filename="shrinked.mp3"`)
+
+		cmd := exec.Command("ffmpeg", "-i", "pipe:0", "-ar", "16000", "-b:a", "32000", "-ac", "1", "-f", "mp3", "-loglevel", "quiet", "pipe:1")
+		cmd.Stdin = file
+		cmd.Stdout = w
+
+		if err := cmd.Run(); err != nil {
+			http.Error(w, "Could not process MP3", http.StatusInternalServerError)
+			return
+		}
+	}
+}
+
+func HandleWAV() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		file, _, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
+			return
+		}
+		defer file.Close()
+
+		w.Header().Set("Content-Type", "audio/wav")
+		w.Header().Set("Content-Disposition", `attachment; filename="shrinked.mp3"`)
+
+		cmd := exec.Command("ffmpeg", "-i", "pipe:0", "-ar", "16000", "-b:a", "32000", "-ac", "1", "-f", "wav", "-loglevel", "quiet", "pipe:1")
+		cmd.Stdin = file
+		cmd.Stdout = w
+
+		if err := cmd.Run(); err != nil {
+			http.Error(w, "Could not process WAV", http.StatusInternalServerError)
+			return
+		}
+	}
+}
+
+func HandleMP4() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		file, _, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
+			return
+		}
+		defer file.Close()
+
+		tempFile, err := os.CreateTemp("", "original-*.mp4")
+		if err != nil {
+			http.Error(w, "Could not create temporary file", http.StatusInternalServerError)
+			return
+		}
+		defer os.Remove(tempFile.Name())
+
+		_, err = io.Copy(tempFile, file)
+		if err != nil {
+			http.Error(w, "Could not save uploaded file", http.StatusInternalServerError)
+			return
+		}
+		tempFile.Close()
+
+		outputFile := "shrinked.mp4"
+		cmd := exec.Command("ffmpeg", "-i", tempFile.Name(), "-c:v", "libx265", "-preset", "veryfast", "-tag:v", "hvc1", "-b:v", "800k", "-bufsize", "1200k", "-vf", "scale=1080:1920,format=yuv420p", "-b:a", "128k", outputFile)
+
+		if err := cmd.Run(); err != nil {
+			http.Error(w, "Could not process MP4", http.StatusInternalServerError)
+			return
+		}
+
+		processedFile, err := os.Open(outputFile)
+		if err != nil {
+			http.Error(w, "Could not open processed file", http.StatusInternalServerError)
+			return
+		}
+		defer processedFile.Close()
+
+		w.Header().Set("Content-Type", "video/mp4")
+		w.Header().Set("Content-Disposition", `attachment; filename="shrinked.mp4"`)
+
+		_, err = io.Copy(w, processedFile)
+		if err != nil {
+			http.Error(w, "Could not write processed file", http.StatusInternalServerError)
+			return
+		}
+		defer os.Remove("shrinked.mp4")
+	}
+}
+
+func HandleMKV() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		file, _, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
+			return
+		}
+		defer file.Close()
+
+		w.Header().Set("Content-Type", "video/x-matroska")
+		w.Header().Set("Content-Disposition", `attachment; filename="shrinked.mkv"`)
+
+		cmd := exec.Command("ffmpeg", "-i", "pipe:0", "-c:v", "libx265", "-preset", "veryfast", "-tag:v", "hvc1", "-b:v", "800k", "-bufsize", "1200k", "-vf", "scale=1080:1920,format=yuv420p", "-b:a", "128k", "-f", "matroska", "-loglevel", "quiet", "pipe:1")
+		cmd.Stdin = file
+		cmd.Stdout = w
+
+		if err := cmd.Run(); err != nil {
+			http.Error(w, "Could not process MKV", http.StatusInternalServerError)
+			return
+		}
+	}
+}
