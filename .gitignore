@@ -23,8 +23,5 @@ go.work
 tmp/
 dist/
 
-# text files
-*.txt
-
 # env
 .env
