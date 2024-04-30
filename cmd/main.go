@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log/slog"
 	"os"
 
 	_ "github.com/a-h/templ"
@@ -10,13 +9,11 @@ import (
 )
 
 func main() {
+	var port string
 	if err := godotenv.Load(); err != nil {
-		slog.Error("Error loading .env file")
-	}
-
-	port := os.Getenv("PORT")
-	if port == "" {
 		port = ":3000"
+	} else {
+		port = os.Getenv("PORT")
 	}
 
 	server := server.NewServer(port)
