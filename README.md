@@ -32,7 +32,9 @@ All the compression and shrinking is performed using the Go standard library alo
 
 ### Quick Peek:
 
+![swappy-20240430_165715](https://github.com/sumitst05/shrink-it/assets/106669732/5919fcff-a59e-425c-ac2a-bc38c9213422)
 
+![swappy-20240430_165744](https://github.com/sumitst05/shrink-it/assets/106669732/f2b5fb5f-c9e6-4828-9e2b-5d926dd86132)
 
 ### Installation:
 
