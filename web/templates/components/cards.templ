@@ -1,136 +1,25 @@
 package components
 
-templ Cards(choice string) {
-	switch choice {
-		case "image":
-			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('pngFile').click();"
-				>
-					@imageSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">PNG</p>
-					<input type="file" accept="image/png" id="pngFile" name="file" onchange="submitForm('pngFile')" hidden/>
-				</li>
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('jpgFile').click();"
-				>
-					@imageSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">JPG</p>
-					<input type="file" accept="image/jpeg" id="jpgFile" name="file" onchange="submitForm('jpgFile')" hidden/>
-				</li>
-			</ul>
-		case "document":
-			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('pdfFile').click();"
-				>
-					@documentSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">PDF</p>
-					<input type="file" accept="application/pdf" id="pdfFile" name="file" onchange="submitForm('pdfFile')" hidden/>
-				</li>
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('docxFile').click();"
-				>
-					@documentSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">DOCX</p>
-					<input
-						type="file"
-						accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-						id="docxFile"
-						name="file"
-						onchange="submitForm('docxFile')"
-						hidden
-					/>
-				</li>
-			</ul>
-		case "audio":
-			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('mp3File').click();"
-				>
-					@audioSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">MP3</p>
-					<input type="file" accept="audio/mpeg" id="mp3File" hidden/>
-				</li>
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('wavFile').click();"
-				>
-					@audioSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">WAV</p>
-					<input type="file" accept="audio/wav" id="wavFile" hidden/>
-				</li>
-			</ul>
-		case "video":
-			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('mp4File').click();"
-				>
-					@videoSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">MP4</p>
-					<input type="file" accept="video/mp4" id="mp4File" hidden/>
-				</li>
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('mkvFile').click();"
-				>
-					@videoSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">MKV</p>
-					<input type="file" accept="video/x-matroska" id="mkvFile" hidden/>
-				</li>
-			</ul>
-		default:
-			<ul id="cards" class="flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none">
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('pngFile').click();"
-				>
-					@imageSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">PNG</p>
-					<input type="file" accept="image/png" id="pngFile" hidden/>
-				</li>
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('jpgFile').click();"
-				>
-					@imageSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">JPG</p>
-					<input type="file" accept="image/jpg" id="jpgFile" hidden/>
-				</li>
-				<li
-					class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
-					onclick="document.getElementById('webpFile').click();"
-				>
-					@imageSVG()
-					<p class="text-[#f8f6e3] font-bold text-4xl">WebP</p>
-					<input type="file" accept="image/webp" id="webpFile" hidden/>
-				</li>
-			</ul>
+templ Cards(choice string, cards []string) {
+	for _, card := range cards {
+		<li
+			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
+			onclick="document.getElementById('pngFile').click();"
+		>
+			if choice == "image" {
+				@imageSVG()
+			} else if choice == "document" {
+				@documentSVG()
+			} else if choice == "audio" {
+				@audioSVG()
+			} else if choice == "video" {
+				@videoSVG()
+			}
+			<p class="text-[#f8f6e3] font-bold text-4xl">{ card }</p>
+			<input type="file" accept="image/png" id="pngFile" name="file" onchange="submitForm('pngFile')" hidden/>
+		</li>
 	}
 	<script>
-	document.body.addEventListener('htmx:afterOnLoad', function (event) {
-		var fileInputId = event.detail.elt.id;
-		var response = event.detail.xhr.responseText;
-		var link = document.createElement('a');
-		link.href = response;
-
-		if (fileInputId === 'pngFile') {
-			link.download = 'shrinked.png';
-		} else if (fileInputId === 'jpgFile') {
-			link.download = 'shrinked.jpg';
-		}
-
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-	});
-
 	function submitForm(fileInputId) {
 		var form = document.createElement('form');
 		form.method = 'POST';

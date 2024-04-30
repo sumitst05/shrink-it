@@ -33,7 +33,7 @@ func Home() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1 class=\"flex text-6xl font-bold text-[#7AA2E3] dark:text-[#BBE1FA] mt-40 mb-10 select-none\">ShrinkIt</h1><div hx-get=\"/cards\" hx-swap=\"outerHTML\" hx-trigger=\"load\" hx-vals=\"js:{&#34;choice&#34;: localStorage.getItem(&#34;choice&#34;) || &#34;image&#34;}\"><!--Will be swapped with cards--></div></main></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1 class=\"flex text-6xl font-bold text-[#7AA2E3] dark:text-[#BBE1FA] mt-40 mb-10 select-none\">ShrinkIt</h1><ul id=\"cards\" hx-get=\"/cards\" hx-vals=\"js:{&#34;choice&#34;: localStorage.getItem(&#34;choice&#34;) || &#34;image&#34;}\" hx-trigger=\"load\" hx-swap=\"innerHTML\" class=\"flex flex-col md:flex-row justify-center items-center gap-16 mt-8 select-none\"><!--Will be swapped with cards--></ul></main></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

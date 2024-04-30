@@ -1,5 +1,9 @@
 package components
 
+/*
+Implement cards li elements using for loop by iterating over the choices sent by server
+*/
+
 templ Header() {
 	<div
 		class="fixed top-0 flex md:justify-between rounded-lg mt-8 px-4 w-11/12 md:w-3/5 z-10 bg-[#97E7E1] dark:bg-[#3282B8] bg-opacity-40 dark:bg-opacity-80 shadow-md shadow-[#7AA2E3] dark:shadow-[#BBE1FA]"
@@ -13,7 +17,7 @@ templ Header() {
 				hx-get="/cards"
 				hx-vals={ `{"choice": "image" }` }
 				hx-target="#cards"
-				hx-swap="outerHTML"
+				hx-swap="innerHTML"
 			>
 				Image
 			</li>
@@ -23,7 +27,7 @@ templ Header() {
 				hx-get="/cards"
 				hx-vals={ `{"choice": "document" }` }
 				hx-target="#cards"
-				hx-swap="outerHTML"
+				hx-swap="innerHTML"
 			>Document</li>
 			<li
 				id="audio"
@@ -31,7 +35,7 @@ templ Header() {
 				hx-get="/cards"
 				hx-vals={ `{"choice": "audio" }` }
 				hx-target="#cards"
-				hx-swap="outerHTML"
+				hx-swap="innerHTML"
 			>Audio</li>
 			<li
 				id="video"
@@ -39,7 +43,7 @@ templ Header() {
 				hx-get="/cards"
 				hx-vals={ `{"choice": "video" }` }
 				hx-target="#cards"
-				hx-swap="outerHTML"
+				hx-swap="innerHTML"
 			>Video</li>
 		</ul>
 		<button id="toggle-theme" class="py-4 ml-6 dark:text-white">
