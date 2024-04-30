@@ -12,17 +12,17 @@ func CardHandler() http.HandlerFunc {
 
 		var cards []string
 		if choice == "image" {
-			cards = append(cards, "png")
-			cards = append(cards, "jpg")
+			cards = append(cards, "PNG")
+			cards = append(cards, "JPG")
 		} else if choice == "document" {
-			cards = append(cards, "pdf")
-			cards = append(cards, "docx")
+			cards = append(cards, "PDF")
+			cards = append(cards, "DOCX")
 		} else if choice == "audio" {
-			cards = append(cards, "mp3")
-			cards = append(cards, "wav")
+			cards = append(cards, "MP3")
+			cards = append(cards, "WAV")
 		} else if choice == "video" {
-			cards = append(cards, "mp3")
-			cards = append(cards, "wav")
+			cards = append(cards, "MP4")
+			cards = append(cards, "MKV")
 		}
 
 		component := components.Cards(choice, cards)
