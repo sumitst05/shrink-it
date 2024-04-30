@@ -27,6 +27,6 @@ RUN apt-get update && \
 # Build Go app
 RUN go build -o main ./cmd/main.go
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["./main"]
