@@ -10,7 +10,7 @@ func HomeHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		homepage := pages.Home()
 		if err := homepage.Render(r.Context(), w); err != nil {
-			http.Error(w, "Error rendering home page", http.StatusInternalServerError)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 	}
