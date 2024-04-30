@@ -23,46 +23,87 @@ func Cards(choice string, cards []string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		for _, card := range cards {
+		if choice == "image" {
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;pngFile&#39;).click();\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			if choice == "image" {
-				templ_7745c5c3_Err = imageSVG().Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-			} else if choice == "document" {
-				templ_7745c5c3_Err = documentSVG().Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-			} else if choice == "audio" {
-				templ_7745c5c3_Err = audioSVG().Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-			} else if choice == "video" {
-				templ_7745c5c3_Err = videoSVG().Render(ctx, templ_7745c5c3_Buffer)
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">")
+			templ_7745c5c3_Err = imageSVG().Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			var templ_7745c5c3_Var2 string
-			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(card)
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/cards.templ`, Line: 18, Col: 54}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">PNG</p><input type=\"file\" accept=\"image/png\" id=\"pngFile\" name=\"file\" onchange=\"submitForm(&#39;pngFile&#39;)\" hidden></li><li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;jpgFile&#39;).click();\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><input type=\"file\" accept=\"image/png\" id=\"pngFile\" name=\"file\" onchange=\"submitForm(&#39;pngFile&#39;)\" hidden></li>")
+			templ_7745c5c3_Err = imageSVG().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">JPG</p><input type=\"file\" accept=\"image/jpeg\" id=\"jpgFile\" name=\"file\" onchange=\"submitForm(&#39;jpgFile&#39;)\" hidden></li>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		} else if choice == "document" {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;pdfFile&#39;).click();\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = documentSVG().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">PDF</p><input type=\"file\" accept=\"application/pdf\" id=\"pdfFile\" name=\"file\" onchange=\"submitForm(&#39;pdfFile&#39;)\" hidden></li><li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;docxFile&#39;).click();\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = documentSVG().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">DOCX</p><input type=\"file\" accept=\"application/vnd.openxmlformats-officedocument.wordprocessingml.document\" id=\"docxFile\" name=\"file\" onchange=\"submitForm(&#39;docxFile&#39;)\" hidden></li>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		} else if choice == "audio" {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;pngFile&#39;).click();\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = audioSVG().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">MP3</p><input type=\"file\" accept=\"audio/mp3\" id=\"mp3File\" name=\"file\" onchange=\"submitForm(&#39;mp3File&#39;)\" hidden></li><li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;wavFile&#39;).click();\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = audioSVG().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">WAV</p><input type=\"file\" accept=\"audio/wav\" id=\"wavFile\" name=\"file\" onchange=\"submitForm(&#39;wavFile&#39;)\" hidden></li>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		} else if choice == "video" {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;mp4File&#39;).click();\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = videoSVG().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">MP4</p><input type=\"file\" accept=\"video/mp4\" id=\"mp4File\" name=\"file\" onchange=\"submitForm(&#39;mp4File&#39;)\" hidden></li><li class=\"flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer\" onclick=\"document.getElementById(&#39;mkvFile&#39;).click();\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = videoSVG().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[#f8f6e3] font-bold text-4xl\">MKV</p><input type=\"file\" accept=\"video/mkv\" id=\"mkvFile\" name=\"file\" onchange=\"submitForm(&#39;mkvFile&#39;)\" hidden></li>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

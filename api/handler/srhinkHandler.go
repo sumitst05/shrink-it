@@ -91,7 +91,8 @@ func HandlePDF() http.HandlerFunc {
 		}
 		defer file.Close()
 
-		w.Header().Set("Content-Disposition", "attachment; filename=\"shrinked.pdf\"")
+		w.Header().Set("Content-Type", "application/pdf")
+		w.Header().Set("Content-Disposition", `attachment; filename="shrinked.pdf"`)
 
 		cmd := exec.Command("gs", "-sDEVICE=pdfwrite", "-dCompatibilityLevel=1.4", "-dPDFSETTINGS=/ebook", "-dNOPAUSE", "-dQUIET", "-dBATCH", "-sOutputFile=-", "-")
 		cmd.Stdin = file
@@ -140,8 +141,8 @@ func HandleDOCX() http.HandlerFunc {
 			return
 		}
 
-		w.Header().Set("Content-Disposition", `attachment; filename="shrinked.docx"`)
 		w.Header().Set("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+		w.Header().Set("Content-Disposition", `attachment; filename="shrinked.docx"`)
 
 		_, err = w.Write(shrinkedDocx)
 		if err != nil {

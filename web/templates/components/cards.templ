@@ -1,22 +1,80 @@
 package components
 
 templ Cards(choice string, cards []string) {
-	for _, card := range cards {
+	if choice == "image" {
 		<li
 			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
 			onclick="document.getElementById('pngFile').click();"
 		>
-			if choice == "image" {
-				@imageSVG()
-			} else if choice == "document" {
-				@documentSVG()
-			} else if choice == "audio" {
-				@audioSVG()
-			} else if choice == "video" {
-				@videoSVG()
-			}
-			<p class="text-[#f8f6e3] font-bold text-4xl">{ card }</p>
+			@imageSVG()
+			<p class="text-[#f8f6e3] font-bold text-4xl">PNG</p>
 			<input type="file" accept="image/png" id="pngFile" name="file" onchange="submitForm('pngFile')" hidden/>
+		</li>
+		<li
+			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
+			onclick="document.getElementById('jpgFile').click();"
+		>
+			@imageSVG()
+			<p class="text-[#f8f6e3] font-bold text-4xl">JPG</p>
+			<input type="file" accept="image/jpeg" id="jpgFile" name="file" onchange="submitForm('jpgFile')" hidden/>
+		</li>
+	} else if choice == "document" {
+		<li
+			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
+			onclick="document.getElementById('pdfFile').click();"
+		>
+			@documentSVG()
+			<p class="text-[#f8f6e3] font-bold text-4xl">PDF</p>
+			<input type="file" accept="application/pdf" id="pdfFile" name="file" onchange="submitForm('pdfFile')" hidden/>
+		</li>
+		<li
+			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
+			onclick="document.getElementById('docxFile').click();"
+		>
+			@documentSVG()
+			<p class="text-[#f8f6e3] font-bold text-4xl">DOCX</p>
+			<input
+				type="file"
+				accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+				id="docxFile"
+				name="file"
+				onchange="submitForm('docxFile')"
+				hidden
+			/>
+		</li>
+	} else if choice == "audio" {
+		<li
+			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
+			onclick="document.getElementById('pngFile').click();"
+		>
+			@audioSVG()
+			<p class="text-[#f8f6e3] font-bold text-4xl">MP3</p>
+			<input type="file" accept="audio/mp3" id="mp3File" name="file" onchange="submitForm('mp3File')" hidden/>
+		</li>
+		<li
+			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
+			onclick="document.getElementById('wavFile').click();"
+		>
+			@audioSVG()
+			<p class="text-[#f8f6e3] font-bold text-4xl">WAV</p>
+			<input type="file" accept="audio/wav" id="wavFile" name="file" onchange="submitForm('wavFile')" hidden/>
+		</li>
+	} else if choice == "video" {
+		<li
+			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
+			onclick="document.getElementById('mp4File').click();"
+		>
+			@videoSVG()
+			<p class="text-[#f8f6e3] font-bold text-4xl">MP4</p>
+			<input type="file" accept="video/mp4" id="mp4File" name="file" onchange="submitForm('mp4File')" hidden/>
+		</li>
+		<li
+			class="flex flex-col items-center p-8 rounded-lg hover:scale-110 bg-[#7AA2E3] cursor-pointer"
+			onclick="document.getElementById('mkvFile').click();"
+		>
+			@videoSVG()
+			<p class="text-[#f8f6e3] font-bold text-4xl">MKV</p>
+			<input type="file" accept="video/mkv" id="mkvFile" name="file" onchange="submitForm('mkvFile')" hidden/>
 		</li>
 	}
 	<script>
