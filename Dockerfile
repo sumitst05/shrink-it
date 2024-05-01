@@ -18,6 +18,9 @@ RUN chmod +x /usr/local/bin/tailwindcss
 # Compile TailwindCSS styles
 RUN tailwindcss -i ./web/static/index.css -o ./dist/style.css
 
+# Download htmx.min.js
+RUN curl -L https://unpkg.com/htmx.org@1.9.12/dist/htmx.min.js -o ./dist/htmx.min.js
+
 # Install Ghostscript, Pandoc, and FFmpeg
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ghostscript pandoc ffmpeg && \

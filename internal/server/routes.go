@@ -2,7 +2,6 @@ package server
 
 import (
 	"net/http"
-	"path"
 
 	"github.com/sumitst05/shrink-it/api/handler"
 )
@@ -12,16 +11,6 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	fs := http.FileServer(http.Dir("./dist"))
 	router.HandleFunc("/dist/*", func(w http.ResponseWriter, r *http.Request) {
-		// Determine the MIME type based on the file extension
-		switch path.Ext(r.URL.Path) {
-		case ".js":
-			w.Header().Set("Content-Type", "application/javascript")
-		case ".css":
-			w.Header().Set("Content-Type", "text/css")
-		default:
-			// For other file types, use the default Content-Type
-			w.Header().Set("Content-Type", "application/octet-stream")
-		}
 		http.StripPrefix("/dist/", fs).ServeHTTP(w, r)
 	})
 
