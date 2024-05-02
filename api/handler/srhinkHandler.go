@@ -12,6 +12,8 @@ import (
 
 func HandlePNG() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 10*1024*1024)
+
 		file, _, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
@@ -47,6 +49,8 @@ func HandlePNG() http.HandlerFunc {
 
 func HandleJPG() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 10*1024*1024)
+
 		file, _, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
@@ -84,6 +88,8 @@ func HandleJPG() http.HandlerFunc {
 
 func HandlePDF() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 10*1024*1024)
+
 		file, _, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
@@ -107,6 +113,8 @@ func HandlePDF() http.HandlerFunc {
 
 func HandleDOCX() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 10*1024*1024)
+
 		file, _, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
@@ -155,6 +163,8 @@ func HandleDOCX() http.HandlerFunc {
 
 func HandleMP3() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 10*1024*1024)
+
 		file, _, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
@@ -178,6 +188,8 @@ func HandleMP3() http.HandlerFunc {
 
 func HandleWAV() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 10*1024*1024)
+
 		file, _, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
@@ -201,6 +213,8 @@ func HandleWAV() http.HandlerFunc {
 
 func HandleMP4() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 10*1024*1024)
+
 		file, _, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
@@ -251,6 +265,8 @@ func HandleMP4() http.HandlerFunc {
 
 func HandleMKV() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, 10*1024*1024)
+
 		file, _, err := r.FormFile("file")
 		if err != nil {
 			http.Error(w, "Could not retrieve file", http.StatusBadRequest)
