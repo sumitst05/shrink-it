@@ -10,10 +10,10 @@ import (
 
 func main() {
 	var port string
-	if err := godotenv.Load(); err != nil {
+	godotenv.Load()
+	port = os.Getenv("PORT")
+	if port == "" {
 		port = ":3000"
-	} else {
-		port = os.Getenv("PORT")
 	}
 
 	server := server.NewServer(port)
