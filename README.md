@@ -22,11 +22,11 @@ All the compression and shrinking is performed using the Go standard library alo
 
   PDF, DOCX
 
-- 🎶 **Audios** (Pending) :
+- 🎶 **Audios** :
 
   MP3, WAV
 
-- 🎞️ **Videos** (Pending) :
+- 🎞️ **Videos** :
 
   MP4, MKV
 
@@ -81,3 +81,5 @@ make dev
 
 <h2>Render</h2>
 </a>
+
+> Note: The deployment can support only files up to 1 MB, if you want to try uploading larger files, build from source and run locally
